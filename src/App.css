@@ -1,99 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap');
 
 :root {
-  --bg-dark: #0a0a0a;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --accent-color: #3b82f6; /* A subtle, professional blue */
-  --card-bg: #111827;
-  --card-border: #1f2937;
+  --netflix-red: #E50914;
+  --netflix-black: #141414;
+  --text-light: #e5e5e5;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
+  background-color: var(--netflix-black);
+  color: white;
+  overflow-x: hidden;
 }
 
-/* --- Navigation (Glassmorphism) --- */
+/* --- Navbar --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 5%;
+  padding: 1.5rem 4rem;
   position: fixed;
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  z-index: 1000;
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 100;
+  transition: background-color 0.4s;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.nav-black {
+  background-color: var(--netflix-black);
 }
 
 .nav-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-main);
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--netflix-red);
+  font-size: 2.5rem;
+  letter-spacing: 2px;
   text-decoration: none;
-  letter-spacing: 1px;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-links a {
-  color: var(--text-muted);
+  color: var(--text-light);
   text-decoration: none;
-  font-size: 0.95rem;
   font-weight: 400;
   transition: color 0.3s;
 }
 
 .nav-links a:hover, .nav-links a.active-link {
-  color: var(--text-main);
+  color: white;
   font-weight: 600;
 }
 
-.page-container {
-  padding-top: 80px; 
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* --- Hero Section --- */
-.hero-section {
-  min-height: 80vh;
+/* --- Hero Billboard --- */
+.hero-billboard {
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 5%;
+  padding: 0 4rem;
+  background: radial-gradient(circle at 70% 30%, rgba(229, 9, 20, 0.15) 0%, rgba(20, 20, 20, 1) 60%);
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #ffffff, #9ca3af);
-  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  background-clip: text;
-  color: transparent;
 }
 
 .hero-subtitle {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  color: var(--text-muted);
-  margin-bottom: 2.5rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
   max-width: 700px;
 }
 
@@ -103,116 +88,95 @@ body {
 }
 
 .btn {
-  padding: 0.8rem 1.8rem;
-  border-radius: 6px;
-  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
-  border: 1px solid transparent;
+  transition: transform 0.2s, background-color 0.2s;
+  border: none;
 }
 
-.btn-primary {
-  background-color: var(--text-main);
-  color: var(--bg-dark);
+.btn-play {
+  background-color: white;
+  color: black;
 }
 
-.btn-primary:hover {
-  background-color: #d1d5db;
+.btn-play:hover {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-.btn-secondary {
-  background-color: transparent;
-  color: var(--text-main);
-  border-color: var(--card-border);
+.btn-info {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
 }
 
-.btn-secondary:hover {
-  border-color: var(--text-muted);
-  background-color: rgba(255, 255, 255, 0.05);
+.btn-info:hover {
+  background-color: rgba(109, 109, 110, 0.4);
 }
 
-/* --- Content Sections --- */
-.section-container {
-  padding: 4rem 5%;
-  border-bottom: 1px solid var(--card-border);
+/* --- Netflix Rows (Sliders) --- */
+.row-section {
+  padding: 0 4rem 3rem 4rem;
 }
 
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 600;
-}
-
-.about-text {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  max-width: 800px;
-}
-
-/* --- Grids (Skills, Certs, Research) --- */
-.grid-2-col {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 2rem;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--text-muted);
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 1.3rem;
-  color: var(--text-main);
-}
-
-.card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.tag-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.tag {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  color: var(--text-main);
-}
-
-/* --- Contact Section --- */
-.contact-list {
-  list-style: none;
-  padding: 0;
-}
-
-.contact-list li {
+.row-title {
+  font-size: 1.4rem;
+  color: #e5e5e5;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
 }
 
-.contact-list a {
-  color: var(--accent-color);
-  text-decoration: none;
+.row-posters {
+  display: flex;
+  gap: 1.5rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px 0;
 }
 
-.contact-list a:hover {
-  text-decoration: underline;
+.row-posters::-webkit-scrollbar {
+  display: none;
+}
+
+.poster-card {
+  min-width: 300px;
+  background-color: #222;
+  border-radius: 5px;
+  padding: 1.5rem;
+  transition: transform 0.4s;
+  cursor: pointer;
+  border: 1px solid #333;
+}
+
+.poster-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+  z-index: 10;
+  border-color: var(--netflix-red);
+}
+
+.poster-card h3 {
+  margin-top: 0;
+  color: white;
+}
+
+.poster-card p {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.match-score {
+  color: #46d369;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.tags {
+  color: #808080;
+  font-size: 0.85rem;
+  margin-top: 1rem;
 }

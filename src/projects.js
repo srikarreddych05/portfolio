@@ -2,45 +2,54 @@ import React from 'react';
 
 function Projects() {
   return (
-    <div className="projects-page">
-      <h1 style={{ marginTop: '2rem' }}>TV Shows & Movies? No, Just Code.</h1>
-      
-      <h2 className="row-title">Trending Now</h2>
-      <div className="project-row">
-        
-        <div className="project-card">
-          <h2>Smart Parking Management System</h2>
-          <p className="match-score" style={{ color: '#46d369', fontWeight: 'bold', margin: '0.5rem 0' }}>98% Match</p>
-          <p>
-             A Smart Park assistant built for production scalability using a Node.js backend and a Flutter frontend, integrated with a Computer Vision pipeline using OpenCV and YOLO for real-time vehicle detection.
-          </p>
-          <a href="https://github.com/Srikarreddych05/smart-parking" target="_blank" rel="noopener noreferrer" className="github-link">
-            Watch Repository ➔
-          </a>
-        </div>
+    <div className="projects-page" style={{ paddingTop: '100px' }}>
+      <div className="row-section">
+        <h2 className="row-title">Top Picks for You (Featured Projects)</h2>
+        <div className="row-posters">
+          
+          <div className="poster-card" style={{ minWidth: '350px' }}>
+            <p className="match-score">New Release</p>
+            <h3>Smart Parking Management</h3>
+            <p>A cross-platform system utilizing real-time computer vision for vehicle detection and automated parking management.</p>
+            <p className="tags">Flutter • Node.js • OpenCV • YOLO</p>
+            <a href="https://github.com/Srikarreddych05/smart-parking" target="_blank" rel="noopener noreferrer" style={{ color: 'white', display: 'block', marginTop: '10px' }}>Watch Repository ➔</a>
+          </div>
 
-        <div className="project-card">
-          <h2>LIANA+ Cell-Cell Communication</h2>
-          <p className="match-score" style={{ color: '#46d369', fontWeight: 'bold', margin: '0.5rem 0' }}>95% Match</p>
-          <p>
-            A bioinformatics project focusing on a DNN Meta-Learner for robust Cell-Cell Communication inference. Utilizes an ensemble neural network architecture to accurately process complex CCC datasets.
-          </p>
-          <a href="https://github.com/Srikarreddych05/liana-plus" target="_blank" rel="noopener noreferrer" className="github-link">
-            Watch Repository ➔
-          </a>
-        </div>
+          <div className="poster-card" style={{ minWidth: '350px' }}>
+            <p className="match-score">Trending Now</p>
+            <h3>LIANA+ Cell-Cell Communication</h3>
+            <p>Developing a DNN Meta-Learner model for cell-cell communication inference methods to ensure robust bioinformatics analysis.</p>
+            <p className="tags">Python • Deep Learning • Bioinformatics</p>
+            {/* Update the link if your repository name is different */}
+            <a href="https://github.com/Srikarreddych05/liana-plus" target="_blank" rel="noopener noreferrer" style={{ color: 'white', display: 'block', marginTop: '10px' }}>Watch Repository ➔</a>
+          </div>
 
-      </div>
+          <div className="poster-card" style={{ minWidth: '350px' }}>
+            <p className="match-score">Top 10 in India</p>
+            <h3>Sign Language Recognition</h3>
+            <p>A real-time CV application designed to classify and detect sign language gestures.</p>
+            <p className="tags">Python • OpenCV</p>
+            <a href="https://github.com/Srikarreddych05" target="_blank" rel="noopener noreferrer" style={{ color: 'white', display: 'block', marginTop: '10px' }}>Watch Repository ➔</a>
+          </div>
 
-      <h2 className="row-title">My List (Upcoming)</h2>
-      <div className="project-row">
-        <div className="project-card" style={{ borderStyle: 'dashed' }}>
-          <h2>Zero-Knowledge Machine Learning</h2>
-          <p>Research and implementation of scaling Zero-Knowledge Proofs for Deep Learning Inference and Training.</p>
-          <span className="github-link" style={{ color: '#808080' }}>Coming Soon...</span>
         </div>
       </div>
 
+      <div className="row-section">
+        <h2 className="row-title">Because You Watched "Google Cloud" (Certifications)</h2>
+        <div className="row-posters">
+          <div className="poster-card">
+            <h3>Google Cloud Computing</h3>
+            <p>Issued: Oct 2025</p>
+            <p className="tags">Credential ID: 19482318</p>
+          </div>
+          <div className="poster-card">
+            <h3>Prompt Design in Vertex AI</h3>
+            <p>Issued: Aug 2025</p>
+            <p className="tags">Credential ID: 17264471</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
