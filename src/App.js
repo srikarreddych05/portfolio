@@ -1,46 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
+import Home from './Home';
+import Projects from './Projects';
+import './App.css';
 
-function Projects() {
+function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // This creates the Netflix effect where the navbar turns black when you scroll down
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="projects-content" style={{ padding: '4rem 5%' }}>
-      <h1 className="section-title">Featured Projects</h1>
-      
-      <div className="grid-2-col">
-        <div className="card">
-          <h2>Smart Parking Management System</h2>
-          <p>
-            A cross-platform system utilizing real-time computer vision for vehicle detection and automated parking management.
-          </p>
-          <div className="tag-container" style={{ marginBottom: '1.5rem' }}>
-            <span className="tag">Flutter</span>
-            <span className="tag">Node.js</span>
-            <span className="tag">PostgreSQL</span>
-            <span className="tag">OpenCV</span>
-            <span className="tag">YOLO</span>
-          </div>
-          <a href="https://github.com/Srikarreddych05/smart-parking" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ display: 'inline-block', padding: '0.5rem 1rem' }}>
-            View Repository
-          </a>
+    <HashRouter>
+      <nav className={`navbar ${isScrolled ? 'nav-black' : ''}`}>
+        <NavLink to="/" className="nav-brand">SRIKAR REDDY</NavLink>
+        <div className="nav-links">
+          <NavLink to="/" end className={({ isActive }) => isActive ? "active-link" : ""}>Home</NavLink>
+          <NavLink to="/projects" className={({ isActive }) => isActive ? "active-link" : ""}>Projects</NavLink>
         </div>
-
-        <div className="card">
-          <h2>Sign Language Recognition</h2>
-          <p>
-            A real-time CV application designed to classify and detect sign language gestures to improve accessibility communication.
-          </p>
-          <div className="tag-container" style={{ marginBottom: '1.5rem' }}>
-            <span className="tag">Python</span>
-            <span className="tag">OpenCV</span>
-          </div>
-          {/* Update this link if you have a specific repository for this project */}
-          <a href="https://github.com/Srikarreddych05" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ display: 'inline-block', padding: '0.5rem 1rem' }}>
-            View Repository
-          </a>
-        </div>
+      </nav>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+        </Routes>
       </div>
-      
-    </div>
+    </HashRouter>
   );
 }
 
-export default Projects;
+export default App;
